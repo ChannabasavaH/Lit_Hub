@@ -3,7 +3,6 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import admin from 'firebase-admin'
-import serviceAccount from './firebaseConfig.json' with { type: "json" };
 import ExpressError from "./utils/ExpressError.js";
 import booksRouter from "./routes/booksRouter.js";
 import reviewRouter from './routes/reviewRouter.js'
@@ -16,8 +15,20 @@ const app = express();
 app.use(express.json());
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://litrary-hub-default-rtdb.asia-southeast1.firebasedatabase.app/'
+  credential: admin.credential.cert({
+    type: process.env.PRIVATE_TYPE,
+    projectId: process.env.PROJECT_ID,
+    private_key_id: process.env.PRIVATE_KEY_ID,
+    client_id: process.env.CLIENT_ID,
+    auth_uri: process.env.AUTH_URI,
+    token_uri: process.env.TOKEN_URI,
+    auth_provider_x509_cert_url: process.env.AUTH_PROVIDER,
+    client_x509_cert_url: process.env.CLIENT_X,
+    universe_domain: process.env.UNIVERSE_DOMAIN,
+    clientEmail: process.env.CLIENT_EMAIL,
+    privateKey: process.env.PRIVATE_KEY.replace(/\\n/g, '\n')
+  }),
+  databaseURL: process.env.DATABASE_URL
 });
 
 app.use("/api/books",booksRouter);
