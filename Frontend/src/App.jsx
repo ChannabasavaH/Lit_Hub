@@ -8,7 +8,6 @@ import Logout from "./pages/Logout";
 import SearchBooks from "./pages/SearchBooks";
 import SelectShelf from "./pages/SelectShelf";
 import ShelfBooks from "./pages/ShelfBooks";
-import PageNotFound from "./pages/PageNotFound";
 
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Route path='/search-books' element={<SearchBooks />} />
         <Route path='/api/books/:id/shelf' element={<SelectShelf />} />
         <Route path='/api/books/shelf' element={<ShelfBooks />} />
-        <Route path='*' element={<PageNotFound />} />
       </Routes>
   )
 }

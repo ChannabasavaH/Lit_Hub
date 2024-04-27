@@ -35,10 +35,6 @@ app.use("/api/books",booksRouter);
 app.use("/api/books",reviewRouter);
 app.use("/api",userRouter);
 
-app.use("*", (req, res, next) => {
-  next(new ExpressError(404, "Page Not Found!!"));
-});
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Internal Server Error" } = err;
