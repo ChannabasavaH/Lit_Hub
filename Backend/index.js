@@ -2,13 +2,11 @@ import 'dotenv/config'
 import express from "express";
 import mongoose from "mongoose";
 import admin from 'firebase-admin'
-import serviceAccount from './utils/firebaseConfig.json' with { type: "json" };
+import serviceAccount from './firebaseConfig.json' with { type: "json" };
 import ExpressError from "./utils/ExpressError.js";
 import booksRouter from "./routes/booksRouter.js";
 import reviewRouter from './routes/reviewRouter.js'
 import userRouter from './routes/usersRouter.js'
-import Book from './models/bookSchema.js';
-import verifyToken from "./utils/middleware.js";
 
 const dbURL = process.env.ATLASDB_URL;
 
