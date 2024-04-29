@@ -37,11 +37,15 @@ admin.initializeApp({
   databaseURL: process.env.DATABASE_URL
 });
 
-app.use(express.static(path.join(__dirname, 'Frontend','dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use("/api/books",booksRouter);
 app.use("/api/books",reviewRouter);
 app.use("/api",userRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname,  'dist' , 'index.html'));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -49,14 +53,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).send(message);
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend', 'dist' , 'index.html'));
-});
-
-// Catch-all route for 404 errors
-app.get('*', (req, res) => {
-  res.send('Page not found');
-});
 
 mongoose.connect(dbURL)
   .then(() => {

@@ -16,12 +16,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='api/books/:id' element={<ShowBook />} />
-        <Route path='/api/signup' element={<SignUp />} />
-        <Route path='/api/login' element={<Login />} />
-        <Route path='/api/logout' element={<Logout />} />
-        <Route path='/search-books' element={<SearchBooks />} />
-        <Route path='/api/books/:id/shelf' element={<SelectShelf />} />
-        <Route path='/api/books/shelf' element={<ShelfBooks />} />
+        <Route path='api/signup' element={<SignUp />} />
+        <Route path='api/login' element={<Login />} />
+        <Route path='api/logout' element={<Logout />} />
+        <Route path='search-books' element={<SearchBooks />} />
+        <Route path='api/books/:id/shelf' element={<SelectShelf />} />
+        <Route path='api/books/shelf' element={<ShelfBooks />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
   )
