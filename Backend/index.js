@@ -37,14 +37,14 @@ admin.initializeApp({
   databaseURL: process.env.DATABASE_URL
 });
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '../Frontend/dist')));
 
 app.use("/api/books",booksRouter);
 app.use("/api/books",reviewRouter);
 app.use("/api",userRouter);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,  'dist' , 'index.html'));
+  res.sendFile(path.join(__dirname,  '../Frontend/dist' , 'index.html'));
 });
 
 // Error handling middleware
