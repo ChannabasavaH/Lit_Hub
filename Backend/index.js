@@ -5,9 +5,13 @@ import mongoose from "mongoose";
 import admin from 'firebase-admin'
 import ExpressError from "./utils/ExpressError.js";
 import path from 'path';
+import { fileURLToPath } from 'url'; 
 import booksRouter from "./routes/booksRouter.js";
 import reviewRouter from './routes/reviewRouter.js'
 import userRouter from './routes/usersRouter.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 const dbURL = process.env.ATLASDB_URL;
